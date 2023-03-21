@@ -56,9 +56,10 @@
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17
 
-/* Bootmagic. */
-#define BOOTMAGIC_LITE_ROW_RIGHT 4
-#define BOOTMAGIC_LITE_COLUMN_RIGHT 0
+/* RGB settings. */
+#define RGBLED_NUM 72
+#define RGBLED_SPLIT \
+    { 36, 36 }
 
 /* RGB matrix support. */
 #ifdef RGB_MATRIX_ENABLE
