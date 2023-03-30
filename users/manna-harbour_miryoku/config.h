@@ -42,5 +42,12 @@
 #include "custom_config.h"
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 8
+#ifdef VIAL_ENABLE
+/** Vial configuration. */
 #define VIAL_KEYBOARD_UID \
-    { 0x73, 0x18, 0xF9, 0xD5, 0x18, 0x11, 0x99, 0xFF }
+  { 0x86, 0xA6, 0x20, 0x70, 0x08, 0xB1, 0x6F, 0x80 }
+#define VIAL_UNLOCK_COMBO_ROWS \
+  { 0, 4 }
+#define VIAL_UNLOCK_COMBO_COLS \
+  { 0, 0 }
+#endif  // VIAL_ENABLE
