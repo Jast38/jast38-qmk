@@ -1,0 +1,18 @@
+# i3 shortcuts:
+
+    "LGui"  --  to activate all -> Tapdance: tap and hold: left gui, double to switch layer, double hold to toggle layer
+
+        # Layer 2/4 or else
+
+            "LGui + Shift + Q"  --  left upper corner, Macro
+            left most thumb cluster: switch to layer 0
+            middle thumb cluster: LGui
+
+            left block: numbers for workspaces
+            most left: Shift, ctrl
+            most right: - _
+
+            right block :   navigation as macro?
+                            macros for other stuff
+
+
