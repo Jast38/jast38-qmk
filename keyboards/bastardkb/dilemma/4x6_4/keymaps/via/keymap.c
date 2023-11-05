@@ -49,9 +49,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LCTL,    PT_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, PT_SLSH, KC_LALT,
+       KC_LCTL,    PT_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, PT_SLSH, KC_RALT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                         KC_LALT, KC_BSPC,  KC_SPC,   LOWER,      RAISE,  KC_ENT, KC_DEL,  KC_MUTE
+                         KC_LALT, KC_SPC,  KC_LGUI,   LOWER,      RAISE,  KC_ENT, KC_BSPC,  KC_MUTE
   //                    ╰───────────────────────────────────╯ ╰───────────────────────────────────╯
   ),
 
@@ -111,6 +111,54 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #ifdef RGB_MATRIX_ENABLE
 // Forward-declare this helper function since it is defined in rgb_matrix.c.
 void rgb_matrix_update_pwm_buffers(void);
+
+// Layer state indicator
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if (host_keyboard_led_state().caps_lock) {
+        for (int i = led_min; i <= led_max; i++) {
+            if (g_led_config.flags[i] & LED_FLAG_MODIFIER) {
+                rgb_matrix_set_color(i, RGB_RED);
+            }
+        }
+    }
+
+    uint8_t layer = get_highest_layer(layer_state);
+    if (layer > LAYER_BASE) {
+        HSV hsv = rgb_matrix_get_hsv();
+        switch (get_highest_layer(layer_state)) {
+            case LAYER_LOWER:
+                hsv = (HSV){HSV_BLUE};
+                break;
+            case LAYER_RAISE:
+                hsv = (HSV){HSV_CORAL};
+                break;
+            case LAYER_POINTER:
+                hsv = (HSV){HSV_YELLOW};
+                break;
+            default:
+                hsv = (HSV){HSV_RED};
+                break;
+        };
+
+        if (hsv.v > rgb_matrix_get_val()) {
+            hsv.v = RGB_MATRIX_MAXIMUM_BRIGHTNESS;
+        }
+        RGB rgb = hsv_to_rgb(hsv);
+
+        for (int i = led_min; i <= led_max; i++) {
+            if ( g_led_config.flags[i] & LED_FLAG_UNDERGLOW) {
+                rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
+            }
+        };
+
+// use below lines instead of the above for-loop to use the cutout as layer indicator
+//        rgb_matrix_set_color(19, rgb.r, rgb.g, rgb.b);
+//        rgb_matrix_set_color(20, rgb.r, rgb.g, rgb.b);
+//        rgb_matrix_set_color(71, rgb.r, rgb.g, rgb.b);
+//        rgb_matrix_set_color(72, rgb.r, rgb.g, rgb.b);
+    }
+    return false;
+};
 #endif
 
 #ifdef ENCODER_MAP_ENABLE
