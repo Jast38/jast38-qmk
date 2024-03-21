@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LCTL,    PT_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, PT_SLSH, KC_RALT,
+       SC_LCPO,    PT_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, PT_SLSH, SC_RAPC,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                          KC_LALT, KC_SPC,  KC_LGUI,   LOWER,      RAISE,  KC_SFTENT, KC_BSPC,  KC_MUTE
   //                    ╰───────────────────────────────────╯ ╰───────────────────────────────────────╯
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_TRNS, M0,      M1,      M2,      M3,            RGB_RMOD,   KC_PAST,   KC_P1,   KC_P2,   KC_P3, KC_PSLS, KC_PDOT,
   // ╰────────────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                         XXXXXXX, XXXXXXX, KC_P0,         KC_TRNS,    TG(LAYER_RAISE),    KC_DEL,  KC_BSPC, XXXXXXX
+                         XXXXXXX, KC_WWW_REFRESH, KC_P0,  KC_TRNS,    TG(LAYER_RAISE),    KC_DEL,  KC_BSPC, XXXXXXX
   //                    ╰─────────────────────────────────────────╯ ╰──────────────────────────────────────────────╯
   ),
 
