@@ -1,6 +1,5 @@
 /**
- * Copyright 2021 Charly Delay <charly@codesink.dev> (@0xcharly)
- * Copyright 2023 casuanoob <casuanoob@hotmail.com> (@casuanoob)
+ * Copyright 2022 Charly Delay <charly@codesink.dev> (@0xcharly)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,8 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #pragma once
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 8
-#define SPLIT_LAYER_STATE_ENABLE
-#define SPLIT_LED_STATE_ENABLE
+#include_next <mcuconf.h>
+
+#undef RP_I2C_USE_I2C1
+#define RP_I2C_USE_I2C1 TRUE
