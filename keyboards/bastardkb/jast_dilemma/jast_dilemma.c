@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "dilemma.h"
+#include "jast_dilemma.h"
 
 #ifdef CONSOLE_ENABLE
 #    include "print.h"

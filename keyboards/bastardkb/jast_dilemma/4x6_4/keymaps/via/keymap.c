@@ -16,7 +16,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <stdint.h>
+
+#include "qp.h"
+#include "generated/totoro.qgf.h"
+
 #include QMK_KEYBOARD_H
+
+
+static painter_device_t display;
+static painter_image_handle_t my_image;
+static deferred_token my_anim;
+
 
 enum dilemma_keymap_layers {
     LAYER_BASE = 0,
@@ -112,7 +122,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_GESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
+        QK_GESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
         KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
@@ -120,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        SC_LCPO,    PT_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, PT_SLSH, SC_RAPC,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                         KC_LALT, KC_SPC,  KC_LGUI,   LOWER,      RAISE,  KC_SFTENT, KC_BSPC,  KC_MUTE
+                         KC_LALT, KC_SPC,  KC_LGUI,   LOWER,      RAISE,  SC_SENT, KC_SPC,  KC_MUTE
   //                    ╰───────────────────────────────────╯ ╰───────────────────────────────────────╯
   ),
 
@@ -255,13 +265,16 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [LAYER_LOWER]      = {ENCODER_CCW_CW(KC_UP, KC_DOWN), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)},
     [LAYER_RAISE]      = {ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
     [LAYER_POINTER]    = {ENCODER_CCW_CW(RGB_HUD, RGB_HUI), ENCODER_CCW_CW(RGB_SAD, RGB_SAI)},
+    [LAYER_RGB]        = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
 };
 // clang-format on
 #endif // ENCODER_MAP_ENABLE
 
-void shutdown_user(void) {
-#ifdef RGB_MATRIX_ENABLE
-    rgb_matrix_sethsv_noeeprom(HSV_RED);
-    rgb_matrix_update_pwm_buffers();
-#endif // RGB_MATRIX_ENABLE
+void keyboard_post_init_kb(void) {
+    display = qp_gc9a01_make_spi_device(240, 240, LCD_CS_PIN, LCD_DC_PIN, LCD_RST_PIN, 4, 0);         // Create the display
+    qp_init(display, QP_ROTATION_0);   // Initialise the display
+    qp_clear(display);
+    my_image = qp_load_image_mem(gfx_totoro);
+    //    qp_drawimage(display, 0, 0, my_image);
+    my_anim = qp_animate(display, 0, 0, my_image);
 }
