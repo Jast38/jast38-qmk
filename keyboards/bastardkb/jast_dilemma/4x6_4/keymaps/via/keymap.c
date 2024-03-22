@@ -17,15 +17,15 @@
  */
 #include <stdint.h>
 
-#include "qp.h"
-#include "generated/totoro-jumping.qgf.h"
+//#include "qp.h"
+//#include "generated/totoro-jumping.qgf.h"
 
 #include QMK_KEYBOARD_H
 
 
-static painter_device_t display;
-static painter_image_handle_t my_image;
-static deferred_token my_anim;
+//static painter_device_t display;
+//static painter_image_handle_t my_image;
+//static deferred_token my_anim;
 
 
 enum dilemma_keymap_layers {
@@ -261,20 +261,21 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 #ifdef ENCODER_MAP_ENABLE
 // clang-format off
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [LAYER_BASE]       = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
+    [LAYER_BASE]       = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
     [LAYER_LOWER]      = {ENCODER_CCW_CW(KC_UP, KC_DOWN), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)},
-    [LAYER_RAISE]      = {ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
+    [LAYER_RAISE]      = {ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
     [LAYER_POINTER]    = {ENCODER_CCW_CW(RGB_HUD, RGB_HUI), ENCODER_CCW_CW(RGB_SAD, RGB_SAI)},
-    [LAYER_RGB]        = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
+    [LAYER_RGB]        = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
 };
 // clang-format on
 #endif // ENCODER_MAP_ENABLE
-
+/*
 void keyboard_post_init_kb(void) {
     display = qp_gc9a01_make_spi_device(240, 240, LCD_CS_PIN, LCD_DC_PIN, LCD_RST_PIN, 4, 0);         // Create the display
     qp_init(display, QP_ROTATION_0);   // Initialise the display
     qp_clear(display);
     my_image = qp_load_image_mem(gfx_totoro_jumping);
     //    qp_drawimage(display, 0, 0, my_image);
-    my_anim = qp_animate(display, 0, 0, my_image);
+    //my_anim = qp_animate(display, 0, 0, my_image);
 }
+*/
