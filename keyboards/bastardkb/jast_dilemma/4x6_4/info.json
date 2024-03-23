@@ -22,7 +22,7 @@
     "encoder": {
         "enabled" : true,
         "rotary" : [
-            {"pin_a": "GP25", "pin_b": "GP24"}
+            {"pin_a": "GP24", "pin_b": "GP25"}
         ]
     },
     "features": {
