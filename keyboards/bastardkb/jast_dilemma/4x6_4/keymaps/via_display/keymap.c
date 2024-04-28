@@ -154,9 +154,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_TRNS, KC_INS, XXXXXXX, XXXXXXX, TO(LAYER_RGB), RGB_MOD,    KC_LBRC,   XXXXXXX, XXXXXXX,   KC_PSCR, KC_RBRC, XXXXXXX,
   // ├────────────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,       RGB_TOG,    KC_LEFT,   KC_DOWN,   KC_UP, KC_RIGHT, XXXXXXX,XXXXXXX,
+       KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,       RGB_TOG,    KC_LEFT,   KC_DOWN,   KC_UP, KC_RIGHT, XXXXXXX, XXXXXXX,
   // ├────────────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_TRNS, M0,      M1,      M2,      M3,           M4,          KC_HOME,   KC_PGDN,   KC_PGUP, KC_END, XXXXXXX,XXXXXXX,
+       KC_TRNS, M0,      M1,      M2,      M3,           M4,          KC_HOME,   KC_PGDN,   KC_PGUP, KC_END, XXXXXXX, XXXXXXX,
   // ╰────────────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                          XXXXXXX, KC_WWW_REFRESH, KC_TRNS,  KC_TRNS,    TG(LAYER_RAISE),    KC_DEL,  KC_BSPC, XXXXXXX
   //                    ╰─────────────────────────────────────────╯ ╰──────────────────────────────────────────────╯
