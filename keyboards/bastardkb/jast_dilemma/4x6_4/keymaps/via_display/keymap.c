@@ -66,10 +66,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M0:
         if (record->event.pressed) {
             register_code(KC_LCTL);
-            register_code(KC_LALT);
+            register_code(KC_LSFT);
             tap_code(KC_W);
             unregister_code(KC_LCTL);
-            unregister_code(KC_LALT);
+            unregister_code(KC_LSFT);
         } else {
             // When released
             //
@@ -79,10 +79,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M1:
         if (record->event.pressed) {
             register_code(KC_LCTL);
-            register_code(KC_LALT);
+            register_code(KC_LSFT);
             tap_code(KC_E);
             unregister_code(KC_LCTL);
-            unregister_code(KC_LALT);
+            unregister_code(KC_LSFT);
         } else {
             // When released
             //
@@ -92,10 +92,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M2:
         if (record->event.pressed) {
             register_code(KC_LCTL);
-            register_code(KC_LALT);
+            register_code(KC_LSFT);
             tap_code(KC_F12);
             unregister_code(KC_LCTL);
-            unregister_code(KC_LALT);
+            unregister_code(KC_LSFT);
         } else {
             // When released
             //
@@ -105,10 +105,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M3:
         if (record->event.pressed) {
             register_code(KC_LCTL);
-            register_code(KC_LALT);
+            register_code(KC_LSFT);
             tap_code(KC_F11);
             unregister_code(KC_LCTL);
-            unregister_code(KC_LALT);
+            unregister_code(KC_LSFT);
         } else {
             // When released
             //
@@ -261,11 +261,11 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 #ifdef ENCODER_MAP_ENABLE
 // clang-format off
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [LAYER_BASE]       = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [LAYER_BASE]       = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
     [LAYER_LOWER]      = {ENCODER_CCW_CW(KC_UP, KC_DOWN), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)},
-    [LAYER_RAISE]      = {ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [LAYER_RAISE]      = {ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
     [LAYER_POINTER]    = {ENCODER_CCW_CW(RGB_HUD, RGB_HUI), ENCODER_CCW_CW(RGB_SAD, RGB_SAI)},
-    [LAYER_RGB]        = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [LAYER_RGB]        = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
 };
 // clang-format on
 #endif // ENCODER_MAP_ENABLE
