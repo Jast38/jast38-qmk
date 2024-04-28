@@ -59,6 +59,7 @@ enum custom_keycodes {
     M1,
     M2,
     M3,
+    M4,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -66,10 +67,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M0:
         if (record->event.pressed) {
             register_code(KC_LCTL);
-            register_code(KC_LSFT);
+            register_code(KC_LALT);
             tap_code(KC_W);
             unregister_code(KC_LCTL);
-            unregister_code(KC_LSFT);
+            unregister_code(KC_LALT);
         } else {
             // When released
             //
@@ -79,10 +80,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M1:
         if (record->event.pressed) {
             register_code(KC_LCTL);
-            register_code(KC_LSFT);
+            register_code(KC_LALT);
             tap_code(KC_E);
             unregister_code(KC_LCTL);
-            unregister_code(KC_LSFT);
+            unregister_code(KC_LALT);
         } else {
             // When released
             //
@@ -92,10 +93,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M2:
         if (record->event.pressed) {
             register_code(KC_LCTL);
-            register_code(KC_LSFT);
-            tap_code(KC_F12);
+            register_code(KC_LALT);
+            tap_code(KC_O);
             unregister_code(KC_LCTL);
-            unregister_code(KC_LSFT);
+            unregister_code(KC_LALT);
         } else {
             // When released
             //
@@ -105,10 +106,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M3:
         if (record->event.pressed) {
             register_code(KC_LCTL);
-            register_code(KC_LSFT);
-            tap_code(KC_F11);
+            register_code(KC_LALT);
+            tap_code(KC_P);
             unregister_code(KC_LCTL);
-            unregister_code(KC_LSFT);
+            unregister_code(KC_LALT);
+        } else {
+            // When released
+            //
+        }
+        break;
+
+    case M4:
+        if (record->event.pressed) {
+            register_code(KC_LCTL);
+            register_code(KC_LALT);
+            tap_code(KC_L);
+            unregister_code(KC_LCTL);
+            unregister_code(KC_LALT);
         } else {
             // When released
             //
@@ -138,11 +152,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭────────────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,        KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL,
   // ├────────────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX, TO(LAYER_RGB), RGB_MOD,    KC_LBRC,   XXXXXXX, XXXXXXX,   KC_PSCR, KC_RBRC, XXXXXXX,
+       KC_TRNS, KC_INS, XXXXXXX, XXXXXXX, TO(LAYER_RGB), RGB_MOD,    KC_LBRC,   XXXXXXX, XXXXXXX,   KC_PSCR, KC_RBRC, XXXXXXX,
   // ├────────────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,       RGB_TOG,    XXXXXXX,   KC_LEFT,   KC_DOWN,   KC_UP, KC_RIGHT, XXXXXXX,
+       KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,       RGB_TOG,    KC_LEFT,   KC_DOWN,   KC_UP, KC_RIGHT, XXXXXXX,XXXXXXX,
   // ├────────────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_TRNS, M0,      M1,      M2,      M3,            RGB_RMOD,   XXXXXXX,   KC_HOME,   KC_PGDN,   KC_PGUP, KC_END, XXXXXXX,
+       KC_TRNS, M0,      M1,      M2,      M3,           M4,          KC_HOME,   KC_PGDN,   KC_PGUP, KC_END, XXXXXXX,XXXXXXX,
   // ╰────────────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                          XXXXXXX, KC_WWW_REFRESH, KC_TRNS,  KC_TRNS,    TG(LAYER_RAISE),    KC_DEL,  KC_BSPC, XXXXXXX
   //                    ╰─────────────────────────────────────────╯ ╰──────────────────────────────────────────────╯
